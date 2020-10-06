@@ -4,7 +4,8 @@
 1. Ansible server 
 2. Jenkins Server 
 
-### Part-01 Integration Setps
+### Part-01 Integration Setps 
+Open Jenkins UI (Jenkins_server_ip:8080)
 
 Install "publish Over SSH"
  - `Manage Jenkins` > `Manage Plugins` > `Available` > `Publish over SSH` 
