@@ -1,0 +1,25 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: k8-deployment
+spec:
+  selector:
+    matchLabels:
+      app: k8-deployment
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: k8-deployment
+    spec:
+      containers:
+      - name: k8-deployment
+        image: msaraswat/demo-image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
