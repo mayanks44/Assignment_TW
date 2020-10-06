@@ -1,17 +1,22 @@
 # Assignment_TW
 
-This Repository is a collection of Implementation documents.
+# This Repository is a collection of Implementation documents.
 
-Purpose:
-By following this repository you can able to setup a DevOps CI/CD Pipeline using
 
+
+
+# Purpose:
+# By following this repository you can able to setup a DevOps CI/CD Pipeline using
 Jenkins
 Ansible
 Docker 
 Kubernetes &
 Helm
 
-Below are the steps for infra set up, instalation guide and deploying mediawiki application on kubernetes cluster
+
+
+
+# Below are the steps for infra set up, instalation guide and deploying mediawiki application on kubernetes cluster
 
 1- Jenkins:
     - Go to Jenkins folder 
