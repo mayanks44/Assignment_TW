@@ -1,0 +1,20 @@
+---
+- hosts: ansible-server
+  become: true
+
+  tasks: 
+   - name: create image from war file
+     command: docker build -t lamp-devops-image:latest .
+     args:
+       chdir: /opt/demo-k8s
+
+   - name: tag image name
+     command: docker tag lamp-devops-image msaraswat/lamp-devops-image:latest
+
+   - name: docker push image
+     command: docker push docker.io/msaraswat/lamp-devops-image
+   
+   - name: remove docker image
+     command: docker rmi simple-devops-image msaraswat/simple-devops-image:latest
+     ignore_errors: yes
+   

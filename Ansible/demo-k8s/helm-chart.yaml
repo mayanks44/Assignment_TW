@@ -1,0 +1,16 @@
+---
+- name: Create pods using deployment
+  hosts: kubernetes
+  user: ubuntu
+
+  tasks:
+   - name: Delete previous deployed version helm chart
+     shell:  
+       cmd:  '/usr/local/bin/helm delete k8-demo1/Chart' 
+       chdir: '$WORKSPACE'
+     when: result.stdout != ""
+
+   - name: Install current version of k8-deployment helm chart
+     shell:  
+       cmd:  '/usr/local/bin/helm install k8-deployment-{{helm_chart_name}} kubernetes-deployment/{{service_name}} --namespace jenkins-test'
+       chdir: '$WORKSPACE'

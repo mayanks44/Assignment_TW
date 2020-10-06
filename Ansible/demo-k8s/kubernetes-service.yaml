@@ -1,0 +1,8 @@
+---
+- name: create service for deployment
+  hosts: kubernetes
+  user: ubuntu
+
+  tasks:
+  - name: create a service
+    command: kubectl apply -f /home/ubuntu/k8-demo1/firstdemo-service.yml
