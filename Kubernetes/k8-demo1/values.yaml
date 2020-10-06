@@ -1,8 +1,0 @@
-name: k8-deployment
-port: 8080
-image: msaraswat/lamp-devops-image 
-
-servicePort: 80
-serviceTargetPort: 8081
-serviceType: NodePort
-NodePort: 31200
