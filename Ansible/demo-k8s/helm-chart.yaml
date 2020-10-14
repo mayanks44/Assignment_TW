@@ -4,13 +4,28 @@
   user: ubuntu
 
   tasks:
+   - name: Creating work directory
+     shell:
+       cmd: 'mkdir -p /home/ubuntu/helm-demo'
+
    - name: Delete previous deployed version helm chart
-     shell:  
-       cmd:  '/usr/local/bin/helm delete k8-demo1/Chart' 
-       chdir: '$WORKSPACE'
-     when: result.stdout != ""
+     shell:
+       cmd: '/usr/local/bin/helm delete k8-demo'
+       chdir: '/home/ubuntu/helm-demo'
+     ignore_errors: yes
+
+   - name: directory clean up
+     shell:
+       cmd: sudo rm -rf *
+       chdir: '/home/ubuntu/helm-demo'
+     ignore_errors: yes
+
+   - name: helm chart repo clone
+     shell:
+       cmd: 'git clone https://github.com/mayanks44/Helm-Charts.git'
+       chdir: '/home/ubuntu/helm-demo'
 
    - name: Install current version of k8-deployment helm chart
-     shell:  
-       cmd:  '/usr/local/bin/helm install k8-deployment-{{helm_chart_name}} kubernetes-deployment/{{service_name}} --namespace jenkins-test'
-       chdir: '$WORKSPACE'
+     shell:
+       cmd:  '/usr/local/bin/helm install k8-demo Helm-Charts/k8-demo-chart'
+       chdir: '/home/ubuntu/helm-demo'
